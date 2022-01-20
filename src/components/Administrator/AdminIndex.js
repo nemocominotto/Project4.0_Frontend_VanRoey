@@ -19,7 +19,7 @@ const AdminIndex = () => {
     
 
     return (
-        <div>
+        <div className='container m-5'>
             {isLoaded && <AdminList admins={admins}/>}
             <Link to='/administrator/create' className='m-auto btn btn-outline-info'>Administrator toevoegen</Link>
         </div>
