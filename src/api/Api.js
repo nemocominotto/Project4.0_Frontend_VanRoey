@@ -21,7 +21,7 @@ class Api {
     }
 
     static deleteAdmin(adminId) {
-        return axios.delete(BaseUrl + "/administrators", adminId);
+        return axios.delete(BaseUrl + "/administrators/" + adminId);
     }
 
     // Company
