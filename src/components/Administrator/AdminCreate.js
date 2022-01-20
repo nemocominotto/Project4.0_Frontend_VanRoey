@@ -20,7 +20,7 @@ const AdminCreate = () => {
     }
 
     return (
-        <div>
+        <div className='container'>
             <form onSubmit={handleSubmit}>
                 <label>Name</label>
                 <input 
