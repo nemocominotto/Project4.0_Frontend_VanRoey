@@ -11,3 +11,61 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.item {
+  margin: 20px auto;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.05);
+  border-left: 4px solid lightblue;
+}
+.material-icons {
+font-size: 24px;
+margin-left: 10px;
+color: #bbb;
+cursor: pointer;
+}
+.material-icons:hover {
+color: #777;
+}
+
+/* form */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+label {
+  display: block;
+  color: #bbb;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 20px 0 10px 0
+}
+input {
+  padding: 10px;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+}
+textarea {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100px;
+}
+form button {
+  display: block;
+  margin: 20px auto 0;
+  background: #00ce89;
+  color: white;
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  font-size: 16px;
+}
