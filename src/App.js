@@ -7,6 +7,10 @@ import AdminIndex from './components/Administrator/AdminIndex';
 import AdminCreate from './components/Administrator/AdminCreate';
 import AdminEdit from './components/Administrator/AdminEdit';
 
+import TagIndex from './components/tags/TagIndex';
+import TagCreate from './components/tags/TagCreate';
+import TagEdit from './components/tags/TagEdit';
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -17,7 +21,10 @@ function App() {
         <Switch>
           <Route exact path='/administrators' component={AdminIndex} />
           <Route exact path='/administrator/create' component={AdminCreate}/>
+          <Route exact path='/tags' component={TagIndex}/>
+          <Route exact path='/tag/create' component={TagCreate}/>
           <Route path='/administrator/edit/:id' component={AdminEdit}/>
+          <Route path='/tag/edit/:id' component={TagEdit}/>
         </Switch>
       </BrowserRouter>
     </div>
