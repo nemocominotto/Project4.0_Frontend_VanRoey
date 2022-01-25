@@ -37,6 +37,7 @@ const AdminEdit = () => {
                 <label>Name</label>
                 <input 
                   type="text" 
+                  className='col-12'
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -45,6 +46,7 @@ const AdminEdit = () => {
                 <label>Last name</label>
                 <input 
                   type="text" 
+                  className='col-12'
                   required
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
@@ -53,6 +55,7 @@ const AdminEdit = () => {
                 <label>Email address</label>
                 <input 
                   type="email" 
+                  className='col-12'
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

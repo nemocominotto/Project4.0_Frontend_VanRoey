@@ -25,6 +25,7 @@ const AdminCreate = () => {
                 <label>Name</label>
                 <input 
                   type="text" 
+                  className='col-12'
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -33,6 +34,7 @@ const AdminCreate = () => {
                 <label>Last name</label>
                 <input 
                   type="text" 
+                  className='col-12'
                   required
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
@@ -41,6 +43,7 @@ const AdminCreate = () => {
                 <label>Email address</label>
                 <input 
                   type="email" 
+                  className='col-12'
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -49,6 +52,7 @@ const AdminCreate = () => {
                 <label>Password</label>
                 <input 
                   type="password" 
+                  className='col-12'
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
