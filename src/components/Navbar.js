@@ -24,12 +24,12 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/administrators"  >Administrators</Link>
                             </li>
-
                             <li className="nav-item">
                                 <Link className="nav-link" to="/bezoeken" >Bezoeken</Link>
                             </li>
-
-
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/tags"  > Tags</Link>
+                            </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/trackers" >Trackers</Link>
                             </li>

@@ -83,6 +83,10 @@ class Api {
         return axios.put(BaseUrl + '/tags', tag);
     }
 
+    static updateTagStatus(tag) {
+        return axios.put(BaseUrl + '/tags/status', tag);
+    }
+
     static deleteTag(tagId) {
         return axios.delete(BaseUrl + "/tags/" + tagId);
     }
