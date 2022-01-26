@@ -129,8 +129,8 @@ class Api {
         return axios.put(BaseUrl + '/visits', visit);
     }
 
-    static deleteVisit(visitId) {
-        return axios.delete(BaseUrl + "/visits/" + visitId);
+    static deleteVisit(visitID) {
+        return axios.delete(BaseUrl + "/visits/" + visitID);
     }
 
     // Visitor

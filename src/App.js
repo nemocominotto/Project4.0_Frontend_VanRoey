@@ -15,6 +15,12 @@ import TagIndex from './components/tags/TagIndex';
 import TagCreate from './components/tags/TagCreate';
 import TagEdit from './components/tags/TagEdit';
 
+import BezoekCreate from './components/Bezoek/BezoekCreate';
+import BezoekEdit from './components/Bezoek/BezoekEdit';
+
+import BezoekerEdit from './components/Bezoekers/BezoekerEdit';
+import BezoekerCreate from './components/Bezoekers/BezoekerCreate';
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -36,6 +42,12 @@ function App() {
           <Route path='/tag/edit/:id' component={TagEdit}/>
 
           <Route exact path='/bezoeken' component={BezoekIndex} />
+          <Route exact path='/bezoek/create' component={BezoekCreate}/>
+          <Route path='/bezoek/edit/:id' component={BezoekEdit}/>
+
+          <Route path='/bezoeker/edit/:id' component={BezoekerEdit}/>
+          <Route exact path='/bezoeker/create/:id' component={BezoekerCreate}/>
+
         </Switch>
       </BrowserRouter>
     </div>
