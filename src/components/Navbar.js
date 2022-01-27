@@ -1,5 +1,7 @@
 import React from 'react'
-import {BrowserRouter, Link, NavLink} from 'react-router-dom';
+import UserStore from '../UserStore';
+import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react';
 
 const Navbar = () => {
     return (
@@ -19,22 +21,22 @@ const Navbar = () => {
                                 <Link className="nav-link" to="/" >Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/registraties">Registraties</Link>
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/bezoeken' : '/login'}>Registraties</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/administrators"  >Administrators</Link>
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/administrators' : '/login'} >Administrators</Link>
                             </li>
+
                             <li className="nav-item">
-                                <Link className="nav-link" to="/bezoeken" >Bezoeken</Link>
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/tags' : '/login'}  > Tags</Link>
                             </li>
+
                             <li className="nav-item">
-                                <Link className="nav-link" to="/tags"  > Tags</Link>
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/trackers' : '/login'} >Trackers</Link>
                             </li>
+
                             <li className="nav-item">
-                                <Link className="nav-link" to="/trackers" >Trackers</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/account">Account</Link>
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/account' : '/login'}>Account</Link>
                             </li>
                     </ul>
                 </div>
@@ -44,4 +46,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default observer(Navbar);
