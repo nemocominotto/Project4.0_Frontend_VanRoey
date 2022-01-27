@@ -52,7 +52,7 @@ const BezoekerCreate = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <button>Add administrator</button>
+                <button>Add bezoeker</button>
             </form>
         </div>
     )

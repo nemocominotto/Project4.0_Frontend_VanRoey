@@ -86,7 +86,7 @@ const BezoekEdit = () => {
                     {companies.map((company) => <option key={company.companyID} value={company.categoryID}>{company.name}</option>)}
                 </select>
 
-                <button>Update administrator</button>
+                <button>Update bezoek</button>
 
                 <p>List</p>
                 <NumberList visitors={visitors} id={id} />

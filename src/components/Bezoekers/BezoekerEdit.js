@@ -64,7 +64,7 @@ const BezoekerEdit = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <button>Update administrator</button>
+                <button>Update bezoeker</button>
             </form>
         </div>
     )
