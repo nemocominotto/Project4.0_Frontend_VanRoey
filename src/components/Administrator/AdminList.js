@@ -19,6 +19,7 @@ const AdminList = ({admins}) => {
             </div>
         )
     })
+
     return (
         <div>
             {output}
