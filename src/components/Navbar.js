@@ -36,7 +36,7 @@ const Navbar = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/account' : '/login'}>Account</Link>
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/account' : '/login'}>{UserStore.isLoggedIn ? UserStore.email : ''}</Link>
                             </li>
                     </ul>
                 </div>

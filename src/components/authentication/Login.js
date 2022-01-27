@@ -23,10 +23,8 @@ const Login = () => {
                 UserStore.email = email;
                 sessionStorage.setItem('email', email);
                 sessionStorage.setItem('password', password);
-                console.log(UserStore.isLoggedIn);
             } else {
                 UserStore.isLoggedIn = false;
-                console.log('login failed');
             }
         }).then(() => {
             history.push('/');
@@ -35,7 +33,7 @@ const Login = () => {
     
 
     return (
-        <div className='col-6 m-auto'>
+        <div className='col-10 col-md-6 m-auto'>
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
                 <input 
