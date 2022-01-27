@@ -1,6 +1,7 @@
 import React from 'react';
 import Api from '../../api/Api';
 import { Link } from 'react-router-dom';
+import UserStore from '../../UserStore';
 
 const AdminList = ({admins}) => {
     const output = admins.map(admin => {
@@ -11,9 +12,9 @@ const AdminList = ({admins}) => {
                         <h3>{admin.name + ' ' + admin.lastname}</h3>
                         <p>{admin.email}</p>
                     </div>
-                    <div className='col-4 col-md-2 row'>
-                        <Link className='col-5 m-auto btn' to={`/administrator/edit/${admin.administratorId}`}><span className='material-icons'>edit</span></Link>
-                        <button className='col-5 m-auto btn' onClick={() => Api.deleteAdmin(admin.administratorId).then(()=>{window.location.reload(false);})}><span className='material-icons'>delete</span></button>
+                    <div className='col-4 col-md-2 row'>                   
+                        {UserStore.email === admin.email ? '' : <Link className='col-5 m-auto btn' to={`/administrator/edit/${admin.administratorId}`}><span className='material-icons'>edit</span></Link>}
+                        {UserStore.email === admin.email ? '' : <button className='col-5 m-auto btn' onClick={() => Api.deleteAdmin(admin.administratorId).then(()=>{window.location.reload(false);})}><span className='material-icons'>delete</span></button>}
                     </div>
                 </div>
             </div>

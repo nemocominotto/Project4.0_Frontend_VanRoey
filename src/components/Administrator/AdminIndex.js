@@ -11,7 +11,6 @@ const AdminIndex = () => {
     useEffect(() => {
       Api.getAllAdmins().then(res => {
           setAdmins(res.data);
-          console.log(res.data);
       }).then(() => {
           setIsLoaded(true);
       });
@@ -19,7 +18,7 @@ const AdminIndex = () => {
     
 
     return (
-        <div className='container m-auto mt-5'>
+        <div className='container m-auto mt-5 mb-5'>
             {isLoaded && <AdminList admins={admins}/>}
             {isLoaded && <Link to='/administrator/create' className='m-auto btn btn-outline-info'>Administrator toevoegen</Link>}
         </div>

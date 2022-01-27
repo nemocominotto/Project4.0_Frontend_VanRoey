@@ -1,6 +1,5 @@
 import './App.css';
 import Navbar from "./components/Navbar";
-import {Router} from "react-router-dom";
 import Login from "./components/authentication/Login";
 
 import { useEffect } from 'react';
@@ -11,7 +10,7 @@ import UserStore from './UserStore';
 import AdminIndex from './components/Administrator/AdminIndex';
 import AdminCreate from './components/Administrator/AdminCreate';
 import AdminEdit from './components/Administrator/AdminEdit';
-import BezoekIndex from './components/Bezoek/BezoekIndex';
+
 import TrackerEdit from './components/Trackers/TrackerEdit';
 import TrackerCreate from './components/Trackers/TrackerCreate';
 import TrackerIndex from './components/Trackers/TrackerIndex';
@@ -20,11 +19,16 @@ import TagIndex from './components/tags/TagIndex';
 import TagCreate from './components/tags/TagCreate';
 import TagEdit from './components/tags/TagEdit';
 
+import BezoekIndex from './components/Bezoek/BezoekIndex';
 import BezoekCreate from './components/Bezoek/BezoekCreate';
 import BezoekEdit from './components/Bezoek/BezoekEdit';
 
 import BezoekerEdit from './components/Bezoekers/BezoekerEdit';
 import BezoekerCreate from './components/Bezoekers/BezoekerCreate';
+
+import AccountIndex from './components/account/AccountIndex';
+import AccountEdit from './components/account/AccountEdit';
+import AccountReset from './components/account/AccountReset';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -49,14 +53,14 @@ function App() {
         <Navbar></Navbar>
         <Switch>
           <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={Login} />
+          <Route exact path='/' component={UserStore.isLoggedIn ? '' : Login} />
 
           <Route exact path='/administrators' component={UserStore.isLoggedIn ? AdminIndex : ''} />
           <Route exact path='/administrator/create' component={UserStore.isLoggedIn ? AdminCreate : ''}/>
           <Route path='/administrator/edit/:id' component={UserStore.isLoggedIn ? AdminEdit : ''}/>
 
           <Route exact path='/trackers' component={UserStore.isLoggedIn ? TrackerIndex : ''} />
-          <Route path='/tracker/edit/:id' component={UserStore.isLoggedIn ? TrackerIndex : ''}/>
+          <Route path='/tracker/edit/:id' component={UserStore.isLoggedIn ? TrackerEdit : ''}/>
           <Route exact path='/tracker/create' component={UserStore.isLoggedIn ? TrackerCreate : ''}/>
 
           <Route exact path='/tags' component={UserStore.isLoggedIn ? TagIndex : ''}/>
@@ -69,6 +73,10 @@ function App() {
 
           <Route path='/bezoeker/edit/:id' component={UserStore.isLoggedIn ? BezoekerEdit : ''}/>
           <Route exact path='/bezoeker/create/:id' component={UserStore.isLoggedIn ? BezoekerCreate : ''}/>
+
+          <Route exact path='/account/reset' component={UserStore.isLoggedIn ? AccountReset : ''}/>
+          <Route exact path='/account' component={UserStore.isLoggedIn ? AccountIndex : ''}/>
+          <Route path='/account/:mail' component={UserStore.isLoggedIn ? AccountEdit : ''}/>
 
         </Switch>
       </BrowserRouter>

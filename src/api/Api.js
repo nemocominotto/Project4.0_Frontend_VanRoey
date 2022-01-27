@@ -12,6 +12,10 @@ class Api {
         return axios.get(BaseUrl + '/administrators/' + adminId);
     }
 
+    static getAdminByMail(email) {
+        return axios.get(BaseUrl + '/administrators/account/' + email);
+    }
+
     static createAdmin(admin){
         return axios.post(BaseUrl + '/administrators', admin);
     }
