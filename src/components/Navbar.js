@@ -1,7 +1,5 @@
 import React from 'react'
-import UserStore from '../UserStore';
-import { Link } from 'react-router-dom';
-import { observer } from 'mobx-react';
+import {BrowserRouter, Link, NavLink} from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -21,22 +19,22 @@ const Navbar = () => {
                                 <Link className="nav-link" to="/" >Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/registraties' : '/login'}>Registraties</Link>
+                                <Link className="nav-link" to="/registraties">Registraties</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/administrators' : '/login'} >Administrators</Link>
+                                <Link className="nav-link" to="/administrators"  >Administrators</Link>
                             </li>
-
                             <li className="nav-item">
-                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/tags' : '/login'}  > Tags</Link>
+                                <Link className="nav-link" to="/bezoeken" >Bezoeken</Link>
                             </li>
-
                             <li className="nav-item">
-                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/trackers' : '/login'} >Trackers</Link>
+                                <Link className="nav-link" to="/tags"  > Tags</Link>
                             </li>
-
                             <li className="nav-item">
-                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/account' : '/login'}>Account</Link>
+                                <Link className="nav-link" to="/trackers" >Trackers</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/account">Account</Link>
                             </li>
                     </ul>
                 </div>
@@ -46,4 +44,4 @@ const Navbar = () => {
     )
 }
 
-export default observer(Navbar);
+export default Navbar
