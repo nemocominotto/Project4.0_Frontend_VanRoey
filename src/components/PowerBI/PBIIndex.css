@@ -1,0 +1,14 @@
+body{
+    /* background-color: black !important; */
+}
+
+.pbiContainer {
+    /* left: 50% */
+}
+
+.Embed-container {
+    height: 800px;
+    width: 100%;
+
+    /* position: center; */
+}
