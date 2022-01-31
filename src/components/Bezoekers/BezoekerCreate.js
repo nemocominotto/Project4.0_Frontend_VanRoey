@@ -24,7 +24,7 @@ const BezoekerCreate = () => {
       
       });
 
-      Api.getAllVisitorTags().then(res => {
+      Api.getAllVisitorTagsByVisit(id).then(res => {
         setVisitortags(res.data);
         console.log(res.data)
       }).then(() => {
