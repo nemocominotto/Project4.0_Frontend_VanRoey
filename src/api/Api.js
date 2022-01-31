@@ -163,6 +163,10 @@ class Api {
         return axios.get(BaseUrl + "/visitor/tags");
     }
 
+    static getAllVisitorTagsByVisit(visitId) {
+        return axios.get(BaseUrl + "/visitor/tags/visit/"+visitId);
+    }
+
     static getVisitorTag(visitortagId) {
         return axios.get(BaseUrl + '/visitor/tags/' + visitortagId);
     }
