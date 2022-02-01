@@ -14,9 +14,16 @@ const AdminCreate = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const administrator = {name, lastname, email, password}
-        Api.createAdmin(administrator).then(() => {
-            history.push('/administrators');
-        });
+        
+        Api.getAdminByMail(email).then(res => {
+          if (!res.data) {
+            Api.createAdmin(administrator).then(() => {
+              history.push('/administrators');
+            });
+          } else {
+            alert('email al in gebruik')
+          }
+        })
     }
 
     return (

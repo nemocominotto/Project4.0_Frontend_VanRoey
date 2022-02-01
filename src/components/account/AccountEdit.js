@@ -13,12 +13,14 @@ const AccountEdit = () => {
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [administratorId, setAdministratorId] = useState(0);
+    const [oldEmail, setOldEmail] = useState('');
 
     useEffect(() => {
         Api.getAdminByMail(mail).then(res => {
             setName(res.data.name);
             setLastname(res.data.lastname);
             setEmail(res.data.email);
+            setOldEmail(res.data.email);
             setAdministratorId(res.data.administratorId);
         })
     }, []);
@@ -26,14 +28,20 @@ const AccountEdit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        UserStore.email = email;
-
-        sessionStorage.setItem('email', email);
-
         const administrator = {administratorId, name, lastname, email}
-        Api.updateAdmin(administrator).then(() => {
-            history.push('/account');
-        });
+        
+
+        Api.getAdminByMail(email).then(res => {
+            if (email === oldEmail || !res.data) {
+                UserStore.email = email;
+                sessionStorage.setItem('email', email);
+                Api.updateAdmin(administrator).then(() => {
+                    history.push('/account');
+                });
+            } else {
+                alert('email is al in gebruik')
+            }
+        })
     }
     
 
