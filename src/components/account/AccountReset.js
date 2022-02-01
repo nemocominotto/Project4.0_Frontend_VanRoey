@@ -13,6 +13,7 @@ const AccountReset = () => {
     const [email, setEmail] = useState('');
     const [administratorId, setAdministratorId] = useState(0);
 
+    const [oldPassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -30,24 +31,36 @@ const AccountReset = () => {
         e.preventDefault();
         const administrator = {name, lastname, email, password}
 
-        if (password === confirmPassword) {
+        if (password === confirmPassword && oldPassword === sessionStorage.getItem('password')) {
             Api.deleteAdmin(administratorId).then(() => {
                 Api.createAdmin(administrator).then(() => {
                     sessionStorage.setItem('password', password);
                     history.push('/account');
                 })
             })
+        } else {
+            alert('Old password incorrect')
         }
     }
 
     return (
         <div className='container'>
+
             <div className='item'>
                 <h3>{email}</h3>
 
                 <form className='mt-3' onSubmit={handleSubmit}>
 
-                <label>Password</label>
+                <label>Old password</label>
+                <input 
+                  type="password" 
+                  className='col-12'
+                  required
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
+
+                <label>New password</label>
                 <input 
                   type="password" 
                   className='col-12'

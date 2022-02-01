@@ -25,6 +25,7 @@ const Login = () => {
                 sessionStorage.setItem('password', password);
             } else {
                 UserStore.isLoggedIn = false;
+                alert('Email or password is incorrect')
             }
         }).then(() => {
             history.push('/');

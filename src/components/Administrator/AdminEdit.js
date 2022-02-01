@@ -12,12 +12,14 @@ const AdminEdit = () => {
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [administratorId, setAdministratorId] = useState(0);
+    const [oldEmail, setOldEmail] = useState('');
 
     useEffect(() => {
         Api.getAdmin(id).then(res => {
             setName(res.data.name);
             setLastname(res.data.lastname);
             setEmail(res.data.email);
+            setOldEmail(res.data.email);
             setAdministratorId(res.data.administratorId);
         })
     }, []);
@@ -25,9 +27,16 @@ const AdminEdit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const administrator = {administratorId, name, lastname, email}
-        Api.updateAdmin(administrator).then(() => {
-            history.push('/administrators');
-        });
+        
+        Api.getAdminByMail(email).then(res => {
+            if (email === oldEmail || !res.data) {
+                Api.updateAdmin(administrator).then(() => {
+                    history.push('/administrators');
+                });
+            } else {
+                alert('email is al in gebruik')
+            }
+        })
     }
     
 
