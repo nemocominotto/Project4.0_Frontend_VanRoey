@@ -6,12 +6,9 @@ import { vi } from 'date-fns/locale';
 
 const BezoekerCreate = () => {
     const history = useHistory();
-
     const {id} = useParams();
-
     const [visitors, setVisitors] = useState([]);
     const [tags, setTags] = useState([]);
-
     const [visitID, setVisitID] = useState(id);
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
@@ -20,51 +17,36 @@ const BezoekerCreate = () => {
     useEffect(() => {
       Api.getAllTags().then(res => {
         setTags(res.data);
-      }).then(() => {
-      
-      });
+      }).then(() => {});
 
-      Api.getAllVisitorTagsByVisit(id).then(res => {
-        setVisitortags(res.data);
-        console.log(res.data)
-      }).then(() => {
-          //console.log(res.data)
-          //setIsLoaded(true);
-      });
+      Api.getAllVisitorsByVisit(id).then(res => {
+        setVisitors(res.data);
+      }).then(() => {});
     }, []);
       
     const handleSubmit = (e) => {
         e.preventDefault();
-        const visitor = {visitID, name, lastname, email}
-        let unusedTagId = 0;
-        let newvisitorId = 0;
+        let unusedtagID = 0;
 
         tags.forEach(tag => {
           let found = false
-          visitortags.forEach(visitortag => {
-            if(tag.tagId == visitortag.tagId) {
+          visitors.forEach(visitor => {
+            if(tag.tagID == visitor.tagID) {
               found = true;
             }
           });
 
           if(found == false)
           {
-            unusedTagId = tag.tagId
+            unusedtagID= tag.tagID
           }
         });
 
-        console.log(unusedTagId);
+        const visitor = {visitID,tagID:unusedtagID, name, lastname, email}
 
         Api.createVisitor(visitor).then(res => {
-          newvisitorId = res.data.visitorID
         }).then(() => {
-          let visitorTag = {tagId:unusedTagId, visitorId:newvisitorId}
-          console.log(visitorTag);
-          Api.createVisitorTag(visitorTag).then(res => {
-            console.log(res.data);
-          }).then(() => {
-            history.push(`/bezoek/edit/${visitor.visitID}`);
-          });
+          history.push(`/bezoek/edit/${visitor.visitID}`);
         });
     }
 

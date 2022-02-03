@@ -2,7 +2,7 @@ import React from 'react';
 import Api from '../../api/Api';
 import { Link } from 'react-router-dom';
 
-const AdminList = ({visits, companies, bezoekers}) => {
+const VisitList = ({visits, companies, bezoekers}) => {
     const output = visits.map(visit => {
         return (
             <div className='item' key={visit.VisitId}>
@@ -33,14 +33,14 @@ function NumberList(props) {
     const visit = props.visit
     const listItems = companies.map((company) => {
         if(company.companyID === visit.companyID)
-            return <p>Bezoek - {company.name}</p>
+            return <p key={company.companyID}>Bezoek - {company.name}</p>
         return null
     }   
 
     );
     return (
-      <p>{listItems}</p>
+      <div>{listItems}</div>
     );
 }
 
-export default AdminList;
+export default VisitList;

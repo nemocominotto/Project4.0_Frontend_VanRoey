@@ -33,7 +33,7 @@ const BezoekCreate = () => {
 
         var formattedDate = format(datef,"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-        const visit = {companyID:1,email, date:formattedDate, status:true}
+        const visit = {companyID, email, date:formattedDate, status:false}
         console.log(visit);
         Api.createVisit(visit).then(() => {
             history.push('/bezoeken');
@@ -64,7 +64,7 @@ const BezoekCreate = () => {
 
                 <label>Bedrijf</label>
                 <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
-                    {companies.map((company) => <option key={company.companyID} value={company.categoryID}>{company.name}</option>)}
+                    {companies.map((company) => <option key={company.companyID} value={company.companyID}>{company.name}</option>)}
                 </select>
 
                 <button>Add Bezoek</button>

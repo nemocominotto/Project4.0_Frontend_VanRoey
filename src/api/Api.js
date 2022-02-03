@@ -146,6 +146,10 @@ class Api {
         return axios.get(BaseUrl + '/visitors/' + visitorId);
     }
 
+    static getAllVisitorsByVisit(visitId) {
+        return axios.get(BaseUrl + "/visitors/visit/"+visitId);
+    }
+
     static createVisitor(visitor) {
         return axios.post(BaseUrl + "/visitors", visitor);
     }
