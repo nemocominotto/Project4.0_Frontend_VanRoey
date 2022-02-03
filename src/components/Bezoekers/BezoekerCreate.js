@@ -9,7 +9,7 @@ const BezoekerCreate = () => {
 
     const {id} = useParams();
 
-    const [visitortags, setVisitortags] = useState([]);
+    const [visitors, setVisitors] = useState([]);
     const [tags, setTags] = useState([]);
 
     const [visitID, setVisitID] = useState(id);
