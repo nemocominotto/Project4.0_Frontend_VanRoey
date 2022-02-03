@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = 'http://localhost:8050';
+const BaseUrl = 'http://backend-vanroey-project40.azurewebsites.net';
 
 class Api {
     // Admins
