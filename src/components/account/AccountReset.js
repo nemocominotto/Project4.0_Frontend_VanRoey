@@ -11,7 +11,7 @@ const AccountReset = () => {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
-    const [administratorId, setAdministratorId] = useState(0);
+    const [administratorID, setAdministratorID] = useState(0);
 
     const [oldPassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');
@@ -22,7 +22,7 @@ const AccountReset = () => {
             setName(res.data.name);
             setLastname(res.data.lastname);
             setEmail(res.data.email);
-            setAdministratorId(res.data.administratorId);
+            setAdministratorID(res.data.administratorID);
         })
     }, []);
     
@@ -32,7 +32,7 @@ const AccountReset = () => {
         const administrator = {name, lastname, email, password}
 
         if (password === confirmPassword && oldPassword === sessionStorage.getItem('password')) {
-            Api.deleteAdmin(administratorId).then(() => {
+            Api.deleteAdmin(administratorID).then(() => {
                 Api.createAdmin(administrator).then(() => {
                     sessionStorage.setItem('password', password);
                     history.push('/account');

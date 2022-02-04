@@ -30,11 +30,14 @@ import AccountIndex from './components/account/AccountIndex';
 import AccountEdit from './components/account/AccountEdit';
 import AccountReset from './components/account/AccountReset';
 
+import HomeIndex from './components/home/HomeIndex';
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
   useEffect(() => {
-    fetch('http://localhost:8050/administrators/login?email=' + sessionStorage.getItem('email') + '&password=' + sessionStorage.getItem('password'), {
+    if (sessionStorage.getItem('email') !== null) {
+      fetch('http://backend-vanroey-project40.azurewebsites.net/administrators/login?email=' + sessionStorage.getItem('email') + '&password=' + sessionStorage.getItem('password'), {
       method: "GET",
       headers: {"Content-Type": "application/json"}
     }).then(res => {
@@ -45,6 +48,7 @@ function App() {
         UserStore.email = sessionStorage.getItem('email');
       }
     })
+    }
   }, []);
 
   return (
@@ -53,7 +57,7 @@ function App() {
         <Navbar></Navbar>
         <Switch>
           <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={UserStore.isLoggedIn ? '' : Login} />
+          <Route exact path='/' component={UserStore.isLoggedIn ? HomeIndex : Login} />
 
           <Route exact path='/administrators' component={UserStore.isLoggedIn ? AdminIndex : ''} />
           <Route exact path='/administrator/create' component={UserStore.isLoggedIn ? AdminCreate : ''}/>

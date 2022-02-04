@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:8050/administrators/login?email=' + email + '&password=' + password, {
+        fetch('http://backend-vanroey-project40.azurewebsites.net/administrators/login?email=' + email + '&password=' + password, {
             method: "GET",
             headers: {"Content-Type": "application/json"}
         }).then(res => {

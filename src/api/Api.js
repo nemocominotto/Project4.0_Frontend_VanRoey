@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = 'http://localhost:8050';
+const BaseUrl = 'http://backend-vanroey-project40.azurewebsites.net';
 
 class Api {
     // Admins
@@ -131,6 +131,10 @@ class Api {
 
     static updateVisit(visit) {
         return axios.put(BaseUrl + '/visits', visit);
+    }
+
+    static updateVisitStatus(visit) {
+        return axios.put(BaseUrl + '/visits/status', visit);
     }
 
     static deleteVisit(visitID) {
