@@ -7,6 +7,7 @@ const TrackerCreate = () => {
     const history = useHistory();
 
     const [name, setName] = useState('');
+    const [address, setAddress] = useState('');
     const [status, setStatus] = useState('');
 
 
@@ -29,10 +30,17 @@ const TrackerCreate = () => {
                   onChange={(e) => setName(e.target.value)}
                 />
 
+                <label>Address</label>
+                <input 
+                  type="text" 
+                  required
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+
                 <label>Status</label>
                 <input 
                   type="checkbox" 
-                  className='col-12'
                   required
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
