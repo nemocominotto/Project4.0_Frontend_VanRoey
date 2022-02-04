@@ -11,8 +11,8 @@ const TrackerList = ({trackers}) => {
                         <h3>{tracker.name}</h3>
                     </div>
                     <div className='col-4 col-md-2 row'>
-                        <Link className='col-5 m-auto btn' to={`/trackers/edit/${tracker.trackerId}`}><span className='material-icons'>edit</span></Link>
-                        <button className='col-5 m-auto btn' onClick={() => Api.deleteTracker(tracker.trackerId).then(()=>{window.location.reload(false);})}><span className='material-icons'>delete</span></button>
+                        <Link className='col-5 m-auto btn' to={`/tracker/edit/${tracker.trackerID}`}><span className='material-icons'>edit</span></Link>
+                        <button className='col-5 m-auto btn' onClick={() => Api.deleteTracker(tracker.trackerID).then(()=>{window.location.reload(false);})}><span className='material-icons'>delete</span></button>
                     </div>
                 </div>
             </div>

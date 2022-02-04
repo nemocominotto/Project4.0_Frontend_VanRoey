@@ -10,20 +10,20 @@ const TrackerEdit = () => {
 
     const [name, setName] = useState('');
     const [status, setStatus] = useState('');
-    const [trackerId, setTrackerId] = useState(0);
+    const [trackerID, setTrackerID] = useState(0);
 
     useEffect(() => {
         Api.getTracker(id).then(res => {
             setName(res.data.name);
             setStatus(res.data.status);
-            setTrackerId(res.data.trackerId);
+            setTrackerID(res.data.trackerID);
         })
     }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const tracker = {trackerId, name, status}
-        Api.updateAdmin(tracker).then(() => {
+        const tracker = {trackerID, name, status}
+        Api.updateTracker(tracker).then(() => {
             history.push('/trackers');
         });
     }
