@@ -31,7 +31,8 @@ const TrackerCreate = () => {
 
                 <label>Status</label>
                 <input 
-                  type="text" 
+                  type="checkbox" 
+                  className='col-12'
                   required
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}

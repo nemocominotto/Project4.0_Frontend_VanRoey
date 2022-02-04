@@ -64,7 +64,7 @@ const BezoekerEdit = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <button>Update bezoeker</button>
+                <button>Update visitor</button>
             </form>
         </div>
     )

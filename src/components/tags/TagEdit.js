@@ -32,13 +32,22 @@ const TagEdit = () => {
     return (
         <div className='container'>
             <form onSubmit={handleSubmit}>
-                <label>Address</label>
+                <label>Mac address</label>
                 <input 
                   type="text" 
                   className='col-12'
                   required
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                />
+
+                <label>Status</label>
+                <input 
+                  type="checkbox" 
+                  className='col-12'
+                  required
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
                 />
 
                 <button>Update tag</button>
