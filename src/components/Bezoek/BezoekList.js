@@ -33,7 +33,7 @@ function NumberList(props) {
     const visit = props.visit
     const listItems = companies.map((company) => {
         if(company.companyID === visit.companyID)
-            return <p key={company.companyID}>Bezoek - {company.name}</p>
+            return <p key={company.companyID}>Visit - {company.name}</p>
         return null
     }   
 

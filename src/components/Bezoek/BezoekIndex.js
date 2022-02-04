@@ -26,7 +26,7 @@ const BezoekIndex = () => {
     return (
         <div className='container m-5'>
             {isLoaded && <BezoekList visits={visits} companies={companies} />}
-            <Link to='/bezoek/create' className='m-auto btn btn-outline-info'>Bezoek toevoegen</Link>
+            <Link to='/bezoek/create' className='m-auto btn btn-outline-info'>Add visit</Link>
         </div>
     )
 };

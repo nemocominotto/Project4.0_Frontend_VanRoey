@@ -20,7 +20,7 @@ const TagIndex = () => {
     return (
         <div className='container m-auto mb-5 mt-5'>
             {isLoaded && <TagList tags={tags}/>}
-            {isLoaded && <Link to='/tag/create' className='m-auto btn btn-outline-info'>Tag toevoegen</Link>}
+            {isLoaded && <Link to='/tag/create' className='m-auto btn btn-outline-info'>Add tag</Link>}
         </div>
     )
 };

@@ -71,7 +71,7 @@ const BezoekEdit = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <label>Email address</label>
+                <label>Date</label>
                 <input 
                     type="datetime-local" 
                     className='col-12'
@@ -81,16 +81,16 @@ const BezoekEdit = () => {
                     min="2022-01-01" max="2022-12-31"
                 />
 
-                <label>Bedrijf</label>
+                <label>Company</label>
                 <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
                     {companies.map((company) => <option key={company.companyID} value={company.categoryID}>{company.name}</option>)}
                 </select>
 
-                <button>Update bezoek</button>
+                <button>Update visit</button>
 
                 <p>List</p>
                 <NumberList visitors={visitors} id={id} />
-                <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-outline-info'>Bezoek toevoegen</Link>
+                <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-outline-info'>Add Visitor</Link>
             </form>
         </div>
     )
