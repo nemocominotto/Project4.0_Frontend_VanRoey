@@ -11,7 +11,7 @@ const AdminEdit = () => {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
-    const [administratorId, setAdministratorId] = useState(0);
+    const [administratorID, setAdministratorID] = useState(0);
     const [oldEmail, setOldEmail] = useState('');
 
     useEffect(() => {
@@ -20,13 +20,13 @@ const AdminEdit = () => {
             setLastname(res.data.lastname);
             setEmail(res.data.email);
             setOldEmail(res.data.email);
-            setAdministratorId(res.data.administratorId);
+            setAdministratorID(res.data.administratorID);
         })
     }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const administrator = {administratorId, name, lastname, email}
+        const administrator = {administratorID, name, lastname, email}
         
         Api.getAdminByMail(email).then(res => {
             if (email === oldEmail || !res.data) {

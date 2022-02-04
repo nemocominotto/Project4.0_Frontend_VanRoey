@@ -10,20 +10,20 @@ const TagEdit = () => {
 
     const [address, setAddress] = useState('');
     const [status, setStatus] = useState(false);
-    const [tagId, setTagId] = useState(0);
+    const [tagID, setTagID] = useState(0);
 
     useEffect(() => {
         Api.getTag(id).then(res => {
             setAddress(res.data.address);
             setStatus(res.data.status);
-            setTagId(res.data.tagId);
+            setTagID(res.data.tagID);
         })
     }, []);
     
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const tag = {tagId, address, status}
+        const tag = {tagID, address, status}
         Api.updateTag(tag).then(() => {
             history.push('/tags');
         });

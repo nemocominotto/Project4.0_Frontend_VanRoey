@@ -133,6 +133,10 @@ class Api {
         return axios.put(BaseUrl + '/visits', visit);
     }
 
+    static updateVisitStatus(visit) {
+        return axios.put(BaseUrl + '/visits/status', visit);
+    }
+
     static deleteVisit(visitID) {
         return axios.delete(BaseUrl + "/visits/" + visitID);
     }
