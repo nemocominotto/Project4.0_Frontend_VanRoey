@@ -30,7 +30,6 @@ const BezoekCreate = () => {
         e.preventDefault();
 
         var datef = new Date(date);
-
         var formattedDate = format(datef,"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
         const visit = {companyID, email, date:formattedDate, status:false}

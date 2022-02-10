@@ -1,21 +1,23 @@
 import React from 'react';
 import Api from '../../api/Api';
 import { Link } from 'react-router-dom';
+import Moment from 'moment';
 
 const VisitList = ({visits, companies, bezoekers}) => {
+
+    Moment.locale('nl');
+
     const output = visits.map(visit => {
         return (
-            <div className='item' key={visit.VisitId}>
-                <div className='row col-12'>
-                    <div className='col-8 col-md-10'>
-                        <h3><NumberList companies={companies} visit={visit}/></h3>
-                        <p>{visit.email}</p>
-                    </div>
-                    <div className='col-4 col-md-2 row'>
-                        <Link className='col-5 m-auto btn' to={`/bezoek/edit/${visit.visitID}`}><span className='material-icons'>edit</span></Link>
-                        <p>{visit.visitID}</p>
-                        <button className='col-5 m-auto btn' onClick={() => Api.deleteVisit(visit.visitID).then(()=>{window.location.reload(false);})}><span className='material-icons'>delete</span></button>
-                    </div>
+            <div key={visit.visitID} className='row p-3 my-3 bg-w border-rd pt-4'>
+                <div className='col-4'>
+                    <p className='font-weight-bold'>{visit.company.name}</p>
+                </div>
+                <div className='col-4 font-weight-bold'>{Moment(visit.date).format("DD-MM-YYYY - hh:mmu")}</div>
+                <div className='col-4 text-right'>
+                    <Link className='btn btn-primary' to={`/bezoek/edit/${visit.visitID}`}><span className='px-4'>Edit</span></Link>
+                    <span className='spacer d-none d-xs-inline'></span>
+                    <button className='btn btn-danger delete' onClick={() => Api.deleteVisit(visit.visitID).then(()=>{window.location.reload(false);})}><span className='px-3'>Delete</span></button>
                 </div>
             </div>
         )
@@ -23,24 +25,11 @@ const VisitList = ({visits, companies, bezoekers}) => {
 
     return (
         <div>
-            {output}
+            <div>
+                {output}
+            </div>
         </div>
     )
 };
-
-function NumberList(props) {
-    const companies = props.companies;
-    const visit = props.visit
-    const listItems = companies.map((company) => {
-        if(company.companyID === visit.companyID)
-            return <p key={company.companyID}>Visit - {company.name}</p>
-        return null
-    }   
-
-    );
-    return (
-      <div>{listItems}</div>
-    );
-}
 
 export default VisitList;
