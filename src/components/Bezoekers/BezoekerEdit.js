@@ -10,6 +10,7 @@ const BezoekerEdit = () => {
 
     const [visitorID, setVisitorID] = useState(0);
     const [visitID, setVisitID] = useState(0);
+    const [tagID, setTagID] = useState(0);
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -19,6 +20,7 @@ const BezoekerEdit = () => {
         Api.getVisitor(id).then(res => {
             setVisitID(res.data.visitID);
             setVisitorID(res.data.visitorID);
+            setTagID(res.data.tagID);
             setName(res.data.name);
             setLastname(res.data.lastname);
             setEmail(res.data.email);
@@ -27,7 +29,12 @@ const BezoekerEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const visitor = {visitorID,visitID, name, lastname, email}
+        const visitor = {visitorID,visitID,tagID, name, lastname, email}
+
+        console.log('visitors');
+        console.log(visitor);
+
+
         Api.updateVisitor(visitor).then(() => {
             history.push(`/bezoek/edit/${visitor.visitID}`);
         });

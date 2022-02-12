@@ -13,7 +13,7 @@ const BezoekEdit = () => {
     const [companies, setCompanies] = useState([]);
     const [visitors, setVisitors] = useState([]);
     
-
+    const [getvisit, setGetVisit] = useState(0);
     const [visitID, setVisitID] = useState(0);
     const [date, setDate] = useState('');
     const [email, setEmail] = useState('');
@@ -27,6 +27,7 @@ const BezoekEdit = () => {
             setStatus(res.data.status);
             setCompanyID(res.data.companyID);
             setVisitID(res.data.visitID);
+            setGetVisit(res.data);
 
             var datef = new Date(res.data.date);
             var formattedDate = format(datef,"yyyy-MM-dd'T'HH:mm:ss");
@@ -61,52 +62,70 @@ const BezoekEdit = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
-            <label>Email address</label>
-                <input 
-                  type="email" 
-                  className='col-12'
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+            <div className='row pt-4 m-0'>
+                <h1 className='m-0'>
+                    Bezoek
+                </h1>
+            </div>
+            <div className='row'>
+                <div className='col-12 col-md-6'>
+                    <form onSubmit={handleSubmit} className=''>
+                        <label>Email address</label>
+                        <input 
+                            type="email" 
+                            required
+                            value={email}
+                            className='form-control'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-                <label>Date</label>
-                <input 
-                    type="datetime-local" 
-                    className='col-12'
-                    value={date}
-                    required
-                    onChange={(e) => setDate(e.target.value)}
-                    min="2022-01-01" max="2022-12-31"
-                />
+                        <label>Date</label>
+                        <input 
+                            type="datetime-local" 
+                            className='form-control'
+                            value={date}
+                            required
+                            onChange={(e) => setDate(e.target.value)}
+                        />
 
-                <label>Company</label>
-                <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
-                    {companies.map((company) => <option key={company.companyID} value={company.categoryID}>{company.name}</option>)}
-                </select>
+                        <label>Company</label>
+                            <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
+                                {companies.map((company) => 
+                                <option key={company.companyID} value={company.categoryID}>{company.name}</option>)}
+                        </select>
 
-                <button>Update visit</button>
-
-                <p>List</p>
-                <NumberList visitors={visitors} id={id} />
-                <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-outline-info'>Add Visitor</Link>
-            </form>
+                        <button className='btn btn-primary'>Update Visit</button>
+                    </form>
+                </div>
+                <div className='col-12 col-md-6'>
+                    <form>
+                        <label>Visitors</label>           
+                        <VisitorList visitors={visitors} id={id} />
+                        <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-primary'>Add Visitor</Link>           
+                    </form>
+                </div>
+            </div>
         </div>
     )
 };
 
-function NumberList(props) {
+function VisitorList(props) {
     const history = useHistory();
     const visitors = props.visitors;
     const id = props.id
     const listItems = visitors.map((visitor) => {
         return visitor.visitID == id ?
-        <li>
-            <span>{visitor.name}</span>
-            <Link className='col-5 m-auto btn' to={`/bezoeker/edit/${visitor.visitorID}`}><span className='material-icons'>edit</span></Link>
-            <button className='col-5 m-auto btn' onClick={() => Api.deleteVisitor(visitor.visitorID).then(()=>{history.push(`/bezoek/edit/${visitor.visitID}`);})}><span className='material-icons'>delete</span></button>
-        </li>
+        <tr>
+            <td>{visitor.name} {visitor.lastname}</td>
+            <td className='text-center'>
+              TAG -   {visitor.tag.tagID}
+            </td>
+            <td className='text-right'>
+                <Link className='btn btn-primary px-4' to={`/bezoeker/edit/${visitor.visitorID}`}>Edit</Link>
+                <span className='m-1'></span>
+                <button className='btn btn-primary mt-0' onClick={() => Api.deleteVisitor(visitor.visitorID).then(()=>{history.push(`/bezoek/edit/${visitor.visitID}`);})}>Delete</button>
+            </td>
+        </tr>
         
     :
         null
@@ -114,7 +133,7 @@ function NumberList(props) {
 
     );
     return (
-      <ul>{listItems}</ul>
+      <table className='w-100 mb-2'>{listItems}</table>
     );
 }
 

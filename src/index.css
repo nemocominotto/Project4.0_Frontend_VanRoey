@@ -93,3 +93,56 @@ form button {
 .filter-nav button.active {
   color: #555;
 }
+
+.bd-color {
+  background-color: grey;
+}
+
+.bg-w {
+  background-color: #ebebeb!important;
+}
+
+
+.border-rd {
+  border-radius: 25px;
+}
+
+.spacer {
+  width: 10px;
+  margin: 3px;
+}
+
+.btn {
+  border-radius: 0px!important;
+  border: none!important;
+}
+
+.btn-success {
+  background-color: #47d7ad!important;
+}
+
+.btn-primary {
+  background-color: #287abe!important;
+}
+
+.nav-link{
+  color: #287abe!important;
+  font-weight: 600;
+}
+
+
+nav {
+  background-color: white!important;
+  border-bottom: 6px solid #287abe;
+}
+
+.text-right {text-align: right!important;}
+
+.font-weight-bold {
+  font-weight: 600!important;
+}
+
+.form-inline {
+  display: flex!important;
+}
+
