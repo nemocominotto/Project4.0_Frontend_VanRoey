@@ -11,7 +11,7 @@ const BezoekCreate = () => {
 
     const [date, setDate] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+   
     const [status, setStatus] = useState(false);
     const [companyID, setCompanyID] = useState(1);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -41,33 +41,42 @@ const BezoekCreate = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
-                <label>Email address</label>
-                <input 
-                  type="email" 
-                  className='col-12'
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+            <div className='row pt-4 m-0'>
+                <h1 className='m-0'>
+                    Bezoek
+                </h1>
+            </div>
+            <div className='row'>
+                <div className='col-12 col-md-6'>
+                    <form onSubmit={handleSubmit} className=''>
+                        <label>Email address</label>
+                        <input 
+                            type="email" 
+                            required
+                            value={email}
+                            className='form-control'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-                <label>Date</label>
-                <input 
-                    type="datetime-local" 
-                    className='col-12'
-                    value={date}
-                    required
-                    onChange={(e) => setDate(e.target.value)}
-                    min="2022-01-01" max="2022-12-31"
-                />
+                        <label>Date</label>
+                        <input 
+                            type="datetime-local" 
+                            className='form-control'
+                            value={date}
+                            required
+                            onChange={(e) => setDate(e.target.value)}
+                        />
 
-                <label>Company</label>
-                <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
-                    {companies.map((company) => <option key={company.companyID} value={company.companyID}>{company.name}</option>)}
-                </select>
+                        <label>Company</label>
+                            <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
+                                {companies.map((company) => 
+                                <option key={company.companyID} value={company.companyID}>{company.name}</option>)}
+                        </select>
 
-                <button>Add Visit</button>
-            </form>
+                        <button className='btn btn-primary'>Create Visit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 };

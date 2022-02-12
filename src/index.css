@@ -146,18 +146,3 @@ nav {
   display: flex!important;
 }
 
-.form-date {
-  margin-left: 0px!important;
-}
-
-.form-l {
-  margin-left: -15px;
-}
-
-.form-t {
-  margin-left: -25px!important;
-}
-
-.delete {
-  padding-left: 9px!important;
-}

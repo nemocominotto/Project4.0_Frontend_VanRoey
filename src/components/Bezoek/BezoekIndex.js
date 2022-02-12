@@ -77,14 +77,14 @@ const BezoekIndex = () => {
 
     return (
         <div className='container'>
-            <div className='row py-5 pb-0 form-t'>
+            <div className='row py-5 pb-0 mb-0 form-t'>
                 <h1>
                     Bezoeken
                 </h1>
             </div>
             <div className='row'>
-            <form onSubmit={handleSubmit} className="form-inline form-l">
-                <div className='col-5 col-sm-3 m-1 form-date' >
+            <form onSubmit={handleSubmit} className="form-inline">
+                <div className='' >
                     <label>Van</label>
                     <input 
                         type="datetime-local" 
@@ -93,7 +93,12 @@ const BezoekIndex = () => {
                         onChange={(e) => setFromDate(e.target.value)}
                     />
                 </div>
-                <div className='col-5 col-sm-3 m-1'>
+
+                <div className='m-1'>
+
+                </div>
+                
+                <div className=''>
                     <label>Tot</label>
                     <input 
                         type="datetime-local" 
@@ -102,14 +107,19 @@ const BezoekIndex = () => {
                         onChange={(e) => setTillDate(e.target.value)}
                     />
                 </div>
-                <div className='col-2 col-sm-6 m-2'>
-                    <button className='mt-5 btn btn-primary'>Filter</button>
+
+                <div className='m-1'>
+
+                </div>
+                
+                <div className='form-controle mt-4 pt-2'>
+                    <button className='btn btn-primary px-3'>Filter</button>
                 </div>
                 </form>
             </div>
            
             {isLoaded && <BezoekList visits={visits} companies={companies} />}
-            <Link to='/bezoek/create' className='m-auto btn btn-success px-5'>Add</Link>
+            <Link to='/bezoek/create' className='btn btn-primary px-4'>Add</Link>
         </div>
     )
 };
