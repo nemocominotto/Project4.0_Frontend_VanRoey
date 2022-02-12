@@ -17,7 +17,23 @@ const BezoekIndex = () => {
 
     useEffect(() => {
         Api.getAllVisits().then(res => {
-            setVisits(res.data);
+            let today = new Date();
+            let today_final = format(today,"yyyy-MM-dd'T'");
+
+            let filteredVisits = [];
+
+            res.data.forEach(visit => {
+                let date = new Date(visit.date);
+                let date_final = format(date,"yyyy-MM-dd'T'");
+                console.log(today_final +" - "+date_final);
+
+                if(date_final >= today_final) {
+                    filteredVisits.push(visit);
+                }
+            });
+
+
+            setVisits(filteredVisits);
             setActualVisits(res.data);
          }).then(() => {
             setIsLoaded(true);
