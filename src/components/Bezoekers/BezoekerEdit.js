@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Api from '../../api/Api';
 import { useHistory, useParams } from 'react-router-dom';
 
+
 const BezoekerEdit = () => {
     const {id} = useParams();
 
@@ -43,36 +44,45 @@ const BezoekerEdit = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input 
-                  type="text" 
-                  className='col-12'
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+            <div className='row pt-4 m-0'>
+                <h1 className='m-0'>
+                    Bezoeker
+                </h1>
+            </div>
+            <div className='row'>
+              <div className='col-12 col-md-6'>
+                <form onSubmit={handleSubmit}>
+                  <label>Name</label>
+                  <input 
+                    type="text" 
+                    className='form-control'
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
 
-                <label>Last name</label>
-                <input 
-                  type="text" 
-                  className='col-12'
-                  required
-                  value={lastname}
-                  onChange={(e) => setLastname(e.target.value)}
-                />
+                  <label>Last name</label>
+                  <input 
+                    type="text" 
+                    className='form-control'
+                    required
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                  />
 
                 <label>Email address</label>
                 <input 
                   type="email" 
-                  className='col-12'
+                  className='form-control'
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <button>Update visitor</button>
+                <button className='btn btn-primary'>Edit visitor</button>
             </form>
+              </div>
+            </div>
         </div>
     )
 };

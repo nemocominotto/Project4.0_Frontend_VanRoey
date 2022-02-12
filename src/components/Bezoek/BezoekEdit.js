@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import Api from '../../api/Api';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { format } from "date-fns";
-
+import { PropagateLoader } from 'react-spinners';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BezoekEdit = () => {
     const {id} = useParams();
@@ -35,13 +37,14 @@ const BezoekEdit = () => {
         })
         Api.getAllCompanies().then(res => {
             setCompanies(res.data);
-         }).then(() => {
-            Api.getAllVisitors().then(res => {
-                setVisitors(res.data);
-             }).then(() => {
-                setIsLoaded(true);
-            });
+        }).then(() => {});
+
+        Api.getAllVisitors().then(res => {
+            setVisitors(res.data);
+        }).then(() => {
+            setIsLoaded(true);
         });
+
     }, []);
 
     const handleSubmit = (e) => {
@@ -59,54 +62,82 @@ const BezoekEdit = () => {
         
     }
     
-
-    return (
-        <div className='container'>
-            <div className='row pt-4 m-0'>
-                <h1 className='m-0'>
-                    Bezoek
-                </h1>
-            </div>
-            <div className='row'>
-                <div className='col-12 col-md-6'>
-                    <form onSubmit={handleSubmit} className=''>
-                        <label>Email address</label>
-                        <input 
-                            type="email" 
-                            required
-                            value={email}
-                            className='form-control'
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-
-                        <label>Date</label>
-                        <input 
-                            type="datetime-local" 
-                            className='form-control'
-                            value={date}
-                            required
-                            onChange={(e) => setDate(e.target.value)}
-                        />
-
-                        <label>Company</label>
-                            <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
-                                {companies.map((company) => 
-                                <option key={company.companyID} value={company.categoryID}>{company.name}</option>)}
-                        </select>
-
-                        <button className='btn btn-primary'>Update Visit</button>
-                    </form>
+    if(isLoaded){
+        return (
+            <div className='container'>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={1200}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+                <div className='row pt-4 m-0'>
+                    <h1 className='m-0'>
+                        Bezoek
+                    </h1>
                 </div>
-                <div className='col-12 col-md-6'>
-                    <form>
-                        <label>Visitors</label>           
-                        <VisitorList visitors={visitors} id={id} />
-                        <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-primary'>Add Visitor</Link>           
-                    </form>
+                <div className='row'>
+                    <div className='col-12 col-md-6'>
+                        <form onSubmit={handleSubmit} className=''>
+                            <label>Email address</label>
+                            <input 
+                                type="email" 
+                                required
+                                value={email}
+                                className='form-control'
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+    
+                            <label>Date</label>
+                            <input 
+                                type="datetime-local" 
+                                className='form-control'
+                                value={date}
+                                required
+                                onChange={(e) => setDate(e.target.value)}
+                            />
+
+                            
+    
+                            <label>Company</label>
+                                <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
+                                    {companies.map((company) => 
+                                    <option key={company.companyID} value={company.companyID}>{company.name}</option>)}
+                            </select>
+    
+                            <button className='btn btn-primary'>Update Visit</button>
+                        </form>
+                    </div>
+                    <div className='col-12 col-md-6'>
+                        <form>
+                            <label>Visitors</label>           
+                            <VisitorList visitors={visitors} id={id} />
+                            <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-primary'>Add Visitor</Link>           
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else {
+        const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+        return (
+            <div style={style}>
+                <div className='sweet-loading'>
+                    <PropagateLoader
+                        color={'#287abe'}
+                        size="40px"
+                        loading="true"
+                    />
+                </div>
+            </div>
+        )
+    }
 };
 
 function VisitorList(props) {
@@ -123,7 +154,15 @@ function VisitorList(props) {
             <td className='text-right'>
                 <Link className='btn btn-primary px-4' to={`/bezoeker/edit/${visitor.visitorID}`}>Edit</Link>
                 <span className='m-1'></span>
-                <button className='btn btn-primary mt-0' onClick={() => Api.deleteVisitor(visitor.visitorID).then(()=>{history.push(`/bezoek/edit/${visitor.visitID}`);})}>Delete</button>
+                
+                <span className='btn btn-primary mt-0' onClick={() => Api.deleteVisitor(visitor.visitorID).
+                    then(()=>{
+                        //history.push(`/bezoek/edit/${visitor.visitID}`);
+                        window.location.reload(false);
+                    }).catch(error => {
+                        toast.error("Unable to delete visitor", {position: toast.POSITION.TOP_RIGHT});
+                    })
+                    }>Delete</span>
             </td>
         </tr>
         
