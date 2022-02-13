@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Api from '../../api/Api';
 import { useHistory } from 'react-router-dom';
 import { format } from "date-fns";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BezoekCreate = () => {
     const history = useHistory();
@@ -29,18 +31,37 @@ const BezoekCreate = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        var datef = new Date(date);
-        var formattedDate = format(datef,"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        let today = new Date();
+        let today_final = format(today,"yyyy-MM-dd'T'");
 
-        const visit = {companyID, email, date:formattedDate, status:false}
-        console.log(visit);
-        Api.createVisit(visit).then(() => {
-            history.push('/bezoeken');
-        });
+        let datef = new Date(date);
+        let datef_final = format(datef,"yyyy-MM-dd'T'");
+
+        if(datef_final >= today_final) {
+            let formattedDate = format(datef,"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            const visit = {companyID, email, date:formattedDate, status:false}
+            Api.createVisit(visit).then(() => {
+                history.push('/bezoeken');
+            });
+        }
+        else {
+            toast.error("Can't book a visit in the past", {position: toast.POSITION.TOP_RIGHT});
+        }
     }
 
     return (
         <div className='container'>
+            <ToastContainer
+                    position="top-right"
+                    autoClose={1200}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             <div className='row pt-4 m-0'>
                 <h1 className='m-0'>
                     Bezoek

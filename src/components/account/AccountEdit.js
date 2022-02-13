@@ -47,11 +47,18 @@ const AccountEdit = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
+            <div className='row pt-4 m-0'>
+                <h1 className='m-0'>
+                    User
+                </h1>
+            </div>
+            <div className='row'>
+                <div className='col-12 col-md-6'>
+                <form onSubmit={handleSubmit}>
                 <label>Name</label>
                 <input 
                   type="text" 
-                  className='col-12'
+                  className='form-control'
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -60,7 +67,7 @@ const AccountEdit = () => {
                 <label>Last name</label>
                 <input 
                   type="text" 
-                  className='col-12'
+                  className='form-control'
                   required
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
@@ -69,14 +76,16 @@ const AccountEdit = () => {
                 <label>Email address</label>
                 <input 
                   type="email" 
-                  className='col-12'
+                  className='form-control'
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <button>Update account</button>
+                <button className='btn btn-primary'>Update account</button>
             </form>
+                </div>
+            </div>
         </div>
     )
 };

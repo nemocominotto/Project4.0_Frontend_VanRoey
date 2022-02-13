@@ -18,7 +18,12 @@ const TagIndex = () => {
     
 
     return (
-        <div className='container m-auto mb-5 mt-5'>
+        <div className='container m-auto mb-5'>
+            <div className='row py-4 m-0'>
+                <h1 className='m-0 p-0'>
+                    Tags
+                </h1>
+            </div>
             {isLoaded && <TagList tags={tags}/>}
             {isLoaded && <Link to='/tag/create' className='m-auto btn btn-outline-info'>Add tag</Link>}
         </div>

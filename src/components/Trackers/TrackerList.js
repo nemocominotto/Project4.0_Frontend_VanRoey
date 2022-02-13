@@ -6,7 +6,7 @@ const TrackerList = ({trackers}) => {
     const output = trackers.map(tracker => {
         return (
             <div className='item' key={tracker.administratorId}>
-                <div className='row col-12'>
+                <div className='row'>
                     <div className='col-8 col-md-10'>
                         <h3>{tracker.name}</h3>
                     </div>

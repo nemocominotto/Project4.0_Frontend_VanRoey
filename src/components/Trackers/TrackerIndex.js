@@ -19,7 +19,12 @@ const TrackerIndex = () => {
     
 
     return (
-        <div className='container m-5'>
+        <div className='container'>
+            <div className='row py-4 m-0'>
+                <h1 className='m-0 p-0'>
+                    Trackers
+                </h1>
+            </div>
             {isLoaded && <TrackerList trackers={trackers}/>}
             <Link to='/tracker/create' className='m-auto btn btn-outline-info'>Tracker toevoegen</Link>
         </div>

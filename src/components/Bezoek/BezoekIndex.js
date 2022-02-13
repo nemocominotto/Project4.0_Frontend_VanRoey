@@ -25,7 +25,6 @@ const BezoekIndex = () => {
             res.data.forEach(visit => {
                 let date = new Date(visit.date);
                 let date_final = format(date,"yyyy-MM-dd'T'");
-                console.log(today_final +" - "+date_final);
 
                 if(date_final >= today_final) {
                     filteredVisits.push(visit);
