@@ -21,33 +21,48 @@ const TrackerCreate = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
+            <div className='row pt-4 m-0'>
+                <h1 className='m-0'>
+                    Tracker
+                </h1>
+            </div>
+            <div className='row'>
+                <div className='col-12 col-md-6'>
+                <form onSubmit={handleSubmit}>
+                
                 <label>Name</label>
                 <input 
                   type="text" 
                   required
                   value={name}
+                  className='form-control'
                   onChange={(e) => setName(e.target.value)}
                 />
+     
 
+  
                 <label>Address</label>
                 <input 
                   type="text" 
                   required
+                  className='form-control'
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
 
-                <label>Status</label>
-                <input 
-                  type="checkbox" 
-                  required
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                />
 
-                <button>Add tracker</button>
+                <label>Satus</label>
+                <select className="form-control" id="category" value={status} onChange={(e) => setStatus(e.target.value)}>
+                    <option value={true}>{'True'}</option>
+                    <option value={false}>{'False'}</option>
+                </select>
+
+        
+
+                <button className='btn btn-primary'>Add Tracker</button>
             </form>
+                </div>
+            </div>
         </div>
     )
 };

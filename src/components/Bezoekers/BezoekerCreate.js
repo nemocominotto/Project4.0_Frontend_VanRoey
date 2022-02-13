@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import Api from '../../api/Api';
 import { useHistory,useParams } from 'react-router-dom';
 import { vi } from 'date-fns/locale';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const BezoekerCreate = () => {
     const history = useHistory();
@@ -21,7 +24,9 @@ const BezoekerCreate = () => {
 
       Api.getAllVisitorsByVisit(id).then(res => {
         setVisitors(res.data);
-      }).then(() => {});
+      }).then(() => {
+
+      });
     }, []);
       
     const handleSubmit = (e) => {
@@ -36,52 +41,79 @@ const BezoekerCreate = () => {
             }
           });
 
-          if(found == false)
+          if(found == false && tag.status == true)
           {
-            unusedtagID= tag.tagID
+            unusedtagID = tag.tagID
           }
         });
 
-        const visitor = {visitID,tagID:unusedtagID, name, lastname, email}
+        if(unusedtagID == 0) {
+          toast.error("Out of tags!", {
+            position: toast.POSITION.TOP_RIGHT
+          });
+        }
+        else {
+          const visitor = {visitID,tagID:unusedtagID, name, lastname, email}
 
-        Api.createVisitor(visitor).then(res => {
-        }).then(() => {
-          history.push(`/bezoek/edit/${visitor.visitID}`);
-        });
+          Api.createVisitor(visitor).then(res => {
+          }).then(() => {
+            history.push(`/bezoek/edit/${visitor.visitID}`);
+          });
+        }
     }
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
-            <label>Name</label>
-                <input 
-                  type="text" 
-                  className='col-12'
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+            <ToastContainer
+              position="top-right"
+              autoClose={800}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+            <div className='row pt-4 m-0'>
+                <h1 className='m-0'>
+                    Bezoeker
+                </h1>
+            </div>
+            <div className='row'>
+              <div className='col-12 col-md-6'>
+                <form onSubmit={handleSubmit}>
+                  <label>Name</label>
+                  <input 
+                    type="text" 
+                    className='form-control'
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
 
-                <label>Last name</label>
-                <input 
-                  type="text" 
-                  className='col-12'
-                  required
-                  value={lastname}
-                  onChange={(e) => setLastname(e.target.value)}
-                />
+                  <label>Last name</label>
+                  <input 
+                    type="text" 
+                    className='form-control'
+                    required
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                  />
 
                 <label>Email address</label>
                 <input 
                   type="email" 
-                  className='col-12'
+                  className='form-control'
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <button>Add visitor</button>
+                <button className='btn btn-primary'>Add visitor</button>
             </form>
+              </div>
+            </div>
         </div>
     )
 };

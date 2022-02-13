@@ -33,40 +33,48 @@ const TrackerEdit = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
-                <div className='col-12'>
+            <div className='row pt-4 m-0'>
+                <h1 className='m-0'>
+                    Tracker
+                </h1>
+            </div>
+            <div className='row'>
+                <div className='col-12 col-md-6'>
+                <form onSubmit={handleSubmit}>
+                
                 <label>Name</label>
                 <input 
                   type="text" 
                   required
                   value={name}
-                  className='col-12'
+                  className='form-control'
                   onChange={(e) => setName(e.target.value)}
                 />
-                </div>    
+     
 
-                <div className='col-12'>
+  
                 <label>Address</label>
                 <input 
                   type="text" 
                   required
-                  className='col-12'
+                  className='form-control'
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
-                </div>
 
-                <div className='col-12'>
+
                 <label>Satus</label>
                 <select className="form-control" id="category" value={status} onChange={(e) => setStatus(e.target.value)}>
                     <option value={true}>{'True'}</option>
                     <option value={false}>{'False'}</option>
                 </select>
-                </div>
+
         
 
-                <button>Update Tracker</button>
+                <button className='btn btn-primary'>Update Tracker</button>
             </form>
+                </div>
+            </div>
         </div>
     )
 };
