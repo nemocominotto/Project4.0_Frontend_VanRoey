@@ -60,7 +60,7 @@ const CompanyIndex = () => {
             />
             <div className='row py-4 m-0'>
                 <h1 className='m-0 p-0'>
-                    Trackers
+                    Bedrijven
                 </h1>
             </div>
             {output_companies}
