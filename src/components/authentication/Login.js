@@ -34,28 +34,36 @@ const Login = () => {
     
 
     return (
-        <div className='col-10 col-md-6 m-auto'>
-            <form onSubmit={handleSubmit}>
+        <div className='container'>
+            <div className='row s-row mt-md-5'>
+                <div className='col-12 col-md-6 p-md-5 pt-md-3'>
+                <form onSubmit={handleSubmit}>
+                <h1 className='m-0 pb-3'>Login</h1>
                 <label>Email</label>
                 <input 
                   type="email" 
-                  className='col-12'
+                  className='form-control'
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <label>Password</label>
+                <label>Wachtwoord</label>
                 <input 
                   type="password" 
-                  className='col-12'
+                  className='form-control'
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <button>Login</button>
+                <button className='btn btn-primary'>Login</button>
             </form>
+                </div>
+                <div className='d-none d-md-block col-6 back-image'>
+
+                </div>
+            </div>
         </div>
     )
 }

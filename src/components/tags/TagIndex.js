@@ -25,7 +25,7 @@ const TagIndex = () => {
                 </h1>
             </div>
             {isLoaded && <TagList tags={tags}/>}
-            {isLoaded && <Link to='/tag/create' className='m-auto btn btn-outline-info'>Add tag</Link>}
+            {isLoaded && <Link to='/tag/create' className='btn btn-primary px-3'>Toevoegen</Link>}
         </div>
     )
 };

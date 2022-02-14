@@ -84,7 +84,7 @@ const BezoekEdit = () => {
                 <div className='row'>
                     <div className='col-12 col-md-6'>
                         <form onSubmit={handleSubmit} className=''>
-                            <label>Email address</label>
+                            <label>Email adres</label>
                             <input 
                                 type="email" 
                                 required
@@ -93,7 +93,7 @@ const BezoekEdit = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
     
-                            <label>Date</label>
+                            <label>Datum</label>
                             <input 
                                 type="datetime-local" 
                                 className='form-control'
@@ -104,20 +104,20 @@ const BezoekEdit = () => {
 
                             
     
-                            <label>Company</label>
+                            <label>Bedrijf</label>
                                 <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
                                     {companies.map((company) => 
                                     <option key={company.companyID} value={company.companyID}>{company.name}</option>)}
                             </select>
     
-                            <button className='btn btn-primary'>Update Visit</button>
+                            <button className='btn btn-primary px-3'>Update</button>
                         </form>
                     </div>
                     <div className='col-12 col-md-6'>
                         <form>
-                            <label>Visitors</label>           
+                            <label>Bezoekers</label>           
                             <VisitorList visitors={visitors} id={id} />
-                            <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-primary'>Add Visitor</Link>           
+                            <Link to={`/bezoeker/create/${id}`} className='m-auto btn btn-primary'>Toevoegen</Link>           
                         </form>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ function VisitorList(props) {
               TAG -   {visitor.tag.tagID}
             </td>
             <td className='text-right'>
-                <Link className='btn btn-primary px-4' to={`/bezoeker/edit/${visitor.visitorID}`}>Edit</Link>
+                <Link className='btn btn-primary px-4' to={`/bezoeker/edit/${visitor.visitorID}`}>Bewerken</Link>
                 <span className='m-1'></span>
                 
                 <span className='btn btn-primary mt-0' onClick={() => Api.deleteVisitor(visitor.visitorID).
@@ -160,9 +160,9 @@ function VisitorList(props) {
                         //history.push(`/bezoek/edit/${visitor.visitID}`);
                         window.location.reload(false);
                     }).catch(error => {
-                        toast.error("Unable to delete visitor", {position: toast.POSITION.TOP_RIGHT});
+                        toast.error("Bezoeker kan niet worden verwijderd", {position: toast.POSITION.TOP_RIGHT});
                     })
-                    }>Delete</span>
+                    }>Verwijderen</span>
             </td>
         </tr>
         

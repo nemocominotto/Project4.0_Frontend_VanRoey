@@ -30,7 +30,7 @@ const TrackerCreate = () => {
                 <div className='col-12 col-md-6'>
                 <form onSubmit={handleSubmit}>
                 
-                <label>Name</label>
+                <label>Naam</label>
                 <input 
                   type="text" 
                   required
@@ -41,7 +41,7 @@ const TrackerCreate = () => {
      
 
   
-                <label>Address</label>
+                <label>Mac adres</label>
                 <input 
                   type="text" 
                   required
@@ -51,7 +51,7 @@ const TrackerCreate = () => {
                 />
 
 
-                <label>Satus</label>
+                <label>Actief</label>
                 <select className="form-control" id="category" value={status} onChange={(e) => setStatus(e.target.value)}>
                     <option value={true}>{'True'}</option>
                     <option value={false}>{'False'}</option>
@@ -59,7 +59,7 @@ const TrackerCreate = () => {
 
         
 
-                <button className='btn btn-primary'>Add Tracker</button>
+                <button className='btn btn-primary px-3'>Opslaan</button>
             </form>
                 </div>
             </div>

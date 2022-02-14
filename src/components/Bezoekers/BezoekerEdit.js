@@ -52,7 +52,7 @@ const BezoekerEdit = () => {
             <div className='row'>
               <div className='col-12 col-md-6'>
                 <form onSubmit={handleSubmit}>
-                  <label>Name</label>
+                  <label>Naam</label>
                   <input 
                     type="text" 
                     className='form-control'
@@ -61,7 +61,7 @@ const BezoekerEdit = () => {
                     onChange={(e) => setName(e.target.value)}
                   />
 
-                  <label>Last name</label>
+                  <label>Achternaam</label>
                   <input 
                     type="text" 
                     className='form-control'
@@ -70,7 +70,7 @@ const BezoekerEdit = () => {
                     onChange={(e) => setLastname(e.target.value)}
                   />
 
-                <label>Email address</label>
+                <label>Email adres</label>
                 <input 
                   type="email" 
                   className='form-control'
@@ -79,7 +79,7 @@ const BezoekerEdit = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <button className='btn btn-primary'>Edit visitor</button>
+                <button className='btn btn-primary px-3'>Update</button>
             </form>
               </div>
             </div>

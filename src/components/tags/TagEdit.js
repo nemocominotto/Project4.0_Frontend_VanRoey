@@ -39,7 +39,7 @@ const TagEdit = () => {
             <div className='row'>
                 <div className='col-12 col-md-6'>
                     <form onSubmit={handleSubmit}>
-                        <label>Mac address</label>
+                        <label>Mac adres</label>
                         <input 
                             type="text" 
                             className='form-control'
@@ -47,12 +47,12 @@ const TagEdit = () => {
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
-                        <label>Active</label>
+                        <label>Actief</label>
                         <select className="form-control" id="category" value={status} onChange={(e) => setStatus(e.target.value)}>
                             <option value={true}>{'True'}</option>
                             <option value={false}>{'False'}</option>
                         </select>
-                        <button className='btn btn-primary'>Update tag</button>
+                        <button className='btn btn-primary px-3'>Update</button>
                     </form>
                 </div>
             </div>

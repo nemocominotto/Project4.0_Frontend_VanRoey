@@ -27,7 +27,7 @@ const TagCreate = () => {
             <div className='row mt-0 pt-0'>
                 <div className='col-12 col-md-6'>
                     <form onSubmit={handleSubmit}>
-                        <label>Mac address</label>
+                        <label>Mac adres</label>
                         <input 
                             type="text" 
                             className='form-control'
@@ -35,12 +35,12 @@ const TagCreate = () => {
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
-                        <label>Active</label>
+                        <label>Actief</label>
                         <select className="form-control" id="category" value={status} onChange={(e) => setStatus(e.target.value)}>
                             <option value={true}>{'True'}</option>
                             <option value={false}>{'False'}</option>
                         </select>
-                        <button className='btn btn-primary'>Add tag</button>
+                        <button className='btn btn-primary px-3'>Opslaan</button>
                     </form>
                 </div>
             </div>

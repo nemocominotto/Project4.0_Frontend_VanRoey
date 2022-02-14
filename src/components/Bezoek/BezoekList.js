@@ -25,7 +25,7 @@ const VisitList = ({visits}) => {
                                 window.location.reload(false);
                             }).
                             catch(error => {
-                                toast.error("Unable to delete visit", {position: toast.POSITION.TOP_RIGHT});
+                                toast.error("Bezoek kan niet worden verwijderd", {position: toast.POSITION.TOP_RIGHT});
                             })}>
                             <span className='material-icons'>delete</span>
                         </button>

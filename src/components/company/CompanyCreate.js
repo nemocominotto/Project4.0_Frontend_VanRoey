@@ -42,7 +42,7 @@ const CompanyCreate = () => {
             <div className='row'>
                 <div className='col-12 col-md-6'>
                 <form onSubmit={handleSubmit}>
-                <label>Name</label>
+                <label>Naam</label>
                 <input 
                   type="text" 
                   className='form-control'
@@ -51,7 +51,7 @@ const CompanyCreate = () => {
                   onChange={(e) => setName(e.target.value)}
                 />
 
-                <button className='btn btn-primary'>Create bedrijf</button>
+                <button className='btn btn-primary px-3'>Opslaan</button>
             </form>
                 </div>
             </div>
