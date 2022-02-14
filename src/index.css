@@ -113,7 +113,7 @@ form button {
 }
 
 .btn {
-  border-radius: 0px!important;
+  border-radius: 5px!important;
   border: none!important;
 }
 
@@ -144,5 +144,17 @@ nav {
 
 .form-inline {
   display: flex!important;
+}
+
+.back-image {
+  height: 50vh;
+  background-image: url("https://www.vanroey.be/wp-content/uploads/Experience-Center-Yealink-Tafel-telefonie-LifeAtVanRoey.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.s-row {
+  -webkit-box-shadow: 0px 0px 50px 3px rgba(219,219,219,0.85);
+  box-shadow: 0px 0px 50px 3px rgba(219,219,219,0.85);
 }
 

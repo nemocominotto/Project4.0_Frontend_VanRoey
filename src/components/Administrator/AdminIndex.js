@@ -18,9 +18,14 @@ const AdminIndex = () => {
     
 
     return (
-        <div className='container m-auto mt-5 mb-5'>
+        <div className='container m-auto mt-0 mb-5'>
+            <div className='row py-4 m-0'>
+                <h1 className='m-0 p-0'>
+                    Administrators
+                </h1>
+            </div>
             {isLoaded && <AdminList admins={admins}/>}
-            {isLoaded && <Link to='/administrator/create' className='m-auto btn btn-outline-info'>Administrator toevoegen</Link>}
+            {isLoaded && <Link to='/administrator/create' className='m-auto btn btn-primary'>Toevoegen</Link>}
         </div>
     )
 };

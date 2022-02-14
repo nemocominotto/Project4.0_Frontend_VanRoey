@@ -21,7 +21,7 @@ const Navbar = () => {
                                 <Link className="nav-link" to="/" >HOME</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/bezoeken' : '/login'}>REGISTRATIES</Link>
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/bezoeken' : '/login'}>BEZOEKEN</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to={UserStore.isLoggedIn ? '/administrators' : '/login'} >ADMINISTRATORS</Link>

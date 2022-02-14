@@ -29,18 +29,33 @@ const AccountIndex = () => {
 
     return (
         <div className='container'>
-            <div className='item col-10 col-md-8 mt-5 m-auto'>
-                <div className='row col-12'>
-                    <div className='col-8 col-md-10'>
-                        <h3>{name}</h3>
-                        <p>{mail}</p>
-                    </div>
-                </div>
+            <div className='row s-row mt-md-5'>
+                <div className='col-12 col-md-6 p-md-5 pt-md-3'>
+                <form>
+                <h1 className='m-0 pb-3'>Administrator</h1>
+                <label>Naam</label>
+                <input 
+                  type="text" 
+                  className='form-control'
+                  disabled
+                  value={name}
+                />
 
-                <div className='col-12 mt-3 m-auto text-center'>
-                    <Link className='btn btn-outline-primary m-2' to={`/account/${mail}`}>Edit account</Link>
-                    <button className='btn btn-outline-primary m-2' onClick={() => {logout()}}>Logout</button>
-                    <Link to='account/reset' className='btn btn-outline-secondary m-2'>Password reset</Link>
+                <label>Email</label>
+                <input 
+                  type="text" 
+                  className='form-control'
+                  disabled
+                  value={mail}
+                />
+                <br/>
+                <p>
+                    <Link className='btn btn-primary' to={`/account/${mail}`}>Bewerken</Link>  <span className='btn btn-primary' onClick={() => {logout()}}>Log uit</span> <Link to='account/reset' className='btn btn-secondary'>Reset</Link>
+                </p>
+            </form>
+                </div>
+                <div className='d-none d-md-block col-6 back-image'>
+
                 </div>
             </div>
         </div>

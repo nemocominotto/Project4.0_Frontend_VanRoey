@@ -42,7 +42,7 @@ const TrackerEdit = () => {
                 <div className='col-12 col-md-6'>
                 <form onSubmit={handleSubmit}>
                 
-                <label>Name</label>
+                <label>Naam</label>
                 <input 
                   type="text" 
                   required
@@ -53,7 +53,7 @@ const TrackerEdit = () => {
      
 
   
-                <label>Address</label>
+                <label>Adres</label>
                 <input 
                   type="text" 
                   required
@@ -63,7 +63,7 @@ const TrackerEdit = () => {
                 />
 
 
-                <label>Satus</label>
+                <label>Actief</label>
                 <select className="form-control" id="category" value={status} onChange={(e) => setStatus(e.target.value)}>
                     <option value={true}>{'True'}</option>
                     <option value={false}>{'False'}</option>
@@ -71,7 +71,7 @@ const TrackerEdit = () => {
 
         
 
-                <button className='btn btn-primary'>Update Tracker</button>
+                <button className='btn btn-primary px-3'>Update</button>
             </form>
                 </div>
             </div>

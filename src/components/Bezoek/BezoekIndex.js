@@ -89,13 +89,11 @@ const BezoekIndex = () => {
     if(isLoaded) {
         return (
             <div className='container'>
-                
-                <div className='row py-5 pb-0 mb-0 form-t'>
-                    <h1>
+            
+                <div className='row pt-3'>
+                <h1>
                         Bezoeken
                     </h1>
-                </div>
-                <div className='row'>
                 <form onSubmit={handleSubmit} className="form-inline">
                     <div className='' >
                         <label>Van</label>
@@ -126,13 +124,13 @@ const BezoekIndex = () => {
                     </div>
                     
                     <div className='form-controle mt-4 pt-2'>
-                        <button className='btn btn-primary px-3'>Filter</button>
+                        <button className='btn btn-primary px-3'>Zoeken</button>
                     </div>
                     </form>
                 </div>
                
                 {isLoaded && <BezoekList visits={visits}/>}
-                <Link to='/bezoek/create' className='btn btn-primary px-4'>Add</Link>
+                <Link to='/bezoek/create' className='btn btn-primary px-3'>Toevoegen</Link>
             </div>
         )
     }

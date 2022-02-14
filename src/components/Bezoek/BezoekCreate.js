@@ -45,7 +45,7 @@ const BezoekCreate = () => {
             });
         }
         else {
-            toast.error("Can't book a visit in the past", {position: toast.POSITION.TOP_RIGHT});
+            toast.error("Datum niet in het heden", {position: toast.POSITION.TOP_RIGHT});
         }
     }
 
@@ -70,7 +70,7 @@ const BezoekCreate = () => {
             <div className='row'>
                 <div className='col-12 col-md-6'>
                     <form onSubmit={handleSubmit} className=''>
-                        <label>Email address</label>
+                        <label>Email adres</label>
                         <input 
                             type="email" 
                             required
@@ -79,7 +79,7 @@ const BezoekCreate = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
 
-                        <label>Date</label>
+                        <label>Datum</label>
                         <input 
                             type="datetime-local" 
                             className='form-control'
@@ -88,13 +88,13 @@ const BezoekCreate = () => {
                             onChange={(e) => setDate(e.target.value)}
                         />
 
-                        <label>Company</label>
+                        <label>Bedrijf</label>
                             <select className="form-control" id="category" value={companyID} onChange={(e) => setCompanyID(e.target.value)}>
                                 {companies.map((company) => 
                                 <option key={company.companyID} value={company.companyID}>{company.name}</option>)}
                         </select>
 
-                        <button className='btn btn-primary'>Create Visit</button>
+                        <button className='btn btn-primary px-3'>Opslaan</button>
                     </form>
                 </div>
             </div>

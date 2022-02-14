@@ -26,7 +26,7 @@ const TrackerIndex = () => {
                 </h1>
             </div>
             {isLoaded && <TrackerList trackers={trackers}/>}
-            <Link to='/tracker/create' className='m-auto btn btn-outline-info'>Tracker toevoegen</Link>
+            <Link to='/tracker/create' className='btn btn-primary px-3'>Toevoegen</Link>
         </div>
     )
 };
