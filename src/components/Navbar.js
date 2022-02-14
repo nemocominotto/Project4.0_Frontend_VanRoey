@@ -28,6 +28,10 @@ const Navbar = () => {
                             </li>
 
                             <li className="nav-item">
+                                <Link className="nav-link" to={UserStore.isLoggedIn ? '/companies' : '/login'} >BEDRIJVEN</Link>
+                            </li>
+
+                            <li className="nav-item">
                                 <Link className="nav-link" to={UserStore.isLoggedIn ? '/tags' : '/login'}  > TAGS</Link>
                             </li>
 

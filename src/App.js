@@ -30,7 +30,11 @@ import AccountIndex from './components/account/AccountIndex';
 import AccountEdit from './components/account/AccountEdit';
 import AccountReset from './components/account/AccountReset';
 
+import CompanyIndex from './components/company/CompanyIndex';
+
 import HomeIndex from './components/home/HomeIndex';
+import CompanyCreate from './components/company/CompanyCreate';
+import CompanyEdit from './components/company/CompanyEdit';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -81,6 +85,10 @@ function App() {
           <Route exact path='/account/reset' component={UserStore.isLoggedIn ? AccountReset : ''}/>
           <Route exact path='/account' component={UserStore.isLoggedIn ? AccountIndex : ''}/>
           <Route path='/account/:mail' component={UserStore.isLoggedIn ? AccountEdit : ''}/>
+
+          <Route exact path='/companies' component={UserStore.isLoggedIn ? CompanyIndex : ''} />
+          <Route exact path='/companies/create' component={UserStore.isLoggedIn ? CompanyCreate : ''} />
+          <Route path='/companies/edit/:id' component={UserStore.isLoggedIn ? CompanyEdit : ''} />
 
         </Switch>
       </BrowserRouter>
