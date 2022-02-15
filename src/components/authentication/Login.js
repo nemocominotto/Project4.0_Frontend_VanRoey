@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserStore from '../../UserStore';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -25,7 +27,7 @@ const Login = () => {
                 sessionStorage.setItem('password', password);
             } else {
                 UserStore.isLoggedIn = false;
-                alert('Email or password is incorrect')
+                toast.error("Wachtwoord of email in onjuist", {position: toast.POSITION.TOP_RIGHT});
             }
         }).then(() => {
             history.push('/');
@@ -35,6 +37,17 @@ const Login = () => {
 
     return (
         <div className='container'>
+            <ToastContainer
+                    position="top-right"
+                    autoClose={1200}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             <div className='row s-row mt-md-5'>
                 <div className='col-12 col-md-6 p-md-5 pt-md-3'>
                 <form onSubmit={handleSubmit}>

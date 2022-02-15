@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import Api from '../../api/Api';
 import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminCreate = () => {
     const history = useHistory();
@@ -10,6 +12,7 @@ const AdminCreate = () => {
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,13 +24,24 @@ const AdminCreate = () => {
               history.push('/administrators');
             });
           } else {
-            alert('email al in gebruik')
+            toast.error("Email is al ingebruik", {position: toast.POSITION.TOP_RIGHT});
           }
         })
     }
 
     return (
         <div className='container'>
+          <ToastContainer
+                    position="top-right"
+                    autoClose={1200}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             <div className='row pt-4 m-0'>
                 <h1 className='m-0'>
                     Administrator
