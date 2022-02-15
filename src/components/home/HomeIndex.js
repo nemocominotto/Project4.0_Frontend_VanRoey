@@ -2,6 +2,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Api from '../../api/Api';
 import UserStore from '../../UserStore';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { PropagateLoader } from 'react-spinners';
 
 const HomeIndex = () => {
     const [user, setUser] = useState('');
@@ -43,7 +46,7 @@ const HomeIndex = () => {
                 setCompany(!company);
             });
         } else {
-            alert('Er staat al een bedrijf actief')
+            toast.error("Er is al een bezoek actief", {position: toast.POSITION.TOP_RIGHT});
         }
     }
 
@@ -89,21 +92,47 @@ const HomeIndex = () => {
             </div>
         </div>
     )
+
+    if(isLoaded) {
+        return (
+            isLoaded && <div className='container m-auto'>
+                <ToastContainer
+                        position="top-right"
+                        autoClose={1200}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
+                <h1 className='mt-4'>Welkom {user}</h1>
+                <p className='mb-5'>{today.toLocaleString('nl', {weekday: 'long'}) + ' ' + today.toLocaleString('nl', {day: 'numeric'}) + ' ' + today.toLocaleString('nl', { month: 'long' }) + ' ' + today.toLocaleString('nl', {year: 'numeric'})}</p>
     
-
-    return (
-        isLoaded && <div className='container m-auto'>
-            <h1 className='mt-4'>Welkom {user}</h1>
-            <p className='mb-5'>{today.toLocaleString('nl', {weekday: 'long'}) + ' ' + today.toLocaleString('nl', {day: 'numeric'}) + ' ' + today.toLocaleString('nl', { month: 'long' }) + ' ' + today.toLocaleString('nl', {year: 'numeric'})}</p>
-
-            {/*<nav className='filter-nav mt-5'>
-                <button onClick={setFilterDate} className={todayString === selectedDate ? 'active' : ''}>Vandaag</button>
-                <button onClick={setFilterDate} className={tomorrowString === selectedDate ? 'active' : ''}>Morgen</button>
-            </nav>*/}
-
-            {output_visits.length === 0 ? no_data : output_visits}
-        </div>
-    )
+                {/*<nav className='filter-nav mt-5'>
+                    <button onClick={setFilterDate} className={todayString === selectedDate ? 'active' : ''}>Vandaag</button>
+                    <button onClick={setFilterDate} className={tomorrowString === selectedDate ? 'active' : ''}>Morgen</button>
+                </nav>*/}
+    
+                {output_visits.length === 0 ? no_data : output_visits}
+            </div>
+        )
+    }
+    else {
+        const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+        return (
+            <div style={style}>
+                <div className='sweet-loading'>
+                    <PropagateLoader
+                        color={'#287abe'}
+                        size="40px"
+                        loading="true"
+                    />
+                </div>
+            </div>
+        )
+    }
 };
 
 export default HomeIndex;

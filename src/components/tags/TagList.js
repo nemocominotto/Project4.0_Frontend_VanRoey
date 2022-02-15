@@ -4,6 +4,7 @@ import Api from '../../api/Api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const TagList = ({tags}) => {
     const output_tags = tags.map(tag => {
         return (
@@ -21,11 +22,6 @@ const TagList = ({tags}) => {
                         <button className='col-3 m-auto btn' onClick={() => Api.deleteTag(tag.tagID).then(()=>{window.location.reload(false);}).catch(error => {
                                 toast.error("Tag kan niet worden verwijderd", {position: toast.POSITION.TOP_RIGHT});
                             })}><span className='material-icons'>delete</span></button>
-                        {tag.status ? (
-                            <p onClick={() => Api.updateTagStatus(tag).then(()=>{window.location.reload(false);})} className='col-3 m-auto btn'><span className='material-icons done'>done</span></p>
-                        ): (
-                            <p onClick={() => Api.updateTagStatus(tag).then(()=>{window.location.reload(false);})} className='col-3 m-auto btn'><span className='material-icons'>close</span></p>
-                        )}
                     </div>
                 </div>
             </div>

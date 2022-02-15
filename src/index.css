@@ -31,7 +31,7 @@ color: #777;
 }
 
 .done {
-  color: darkgreen;
+  color: #00ce89;
 }
 
 .inactive {
@@ -147,7 +147,7 @@ nav {
 }
 
 .back-image {
-  height: 50vh;
+  
   background-image: url("https://www.vanroey.be/wp-content/uploads/Experience-Center-Yealink-Tafel-telefonie-LifeAtVanRoey.jpg");
   background-position: center;
   background-size: cover;
@@ -156,5 +156,17 @@ nav {
 .s-row {
   -webkit-box-shadow: 0px 0px 50px 3px rgba(219,219,219,0.85);
   box-shadow: 0px 0px 50px 3px rgba(219,219,219,0.85);
+}
+
+.nav-link {
+  background-color: white!important;
+}
+
+.custom-toggler, .navbar-toggler, .navbar-toggler-icon {
+  color:#287abe!important;
+  border: none!important;
+}a:active {
+  color:#287abe!important;
+  border: none!important;
 }
 
