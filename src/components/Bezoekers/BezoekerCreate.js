@@ -48,7 +48,7 @@ const BezoekerCreate = () => {
         });
 
         if(unusedtagID == 0) {
-          toast.error("Out of tags!", {
+          toast.error("Geen tags beschikbaar!", {
             position: toast.POSITION.TOP_RIGHT
           });
         }
